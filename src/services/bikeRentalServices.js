@@ -15,13 +15,15 @@ const addBikeService = async (bikeName, rentPrice) => {
   await bike.save();
 };
 
-const removeBikeService = async (_id) => {
-  await Bike.findByIdAndRemove({ _id });
+const removeBikeService = async (bikeId) => {
+  await Bike.findByIdAndRemove({ _id: bikeId });
 };
 
-const updateRentalStatusService = async (_id) => {
-  await Bike.findOneAndUpdate(
-    { _id },
+const updateRentalStatusService = async (bikeId) => {
+  const bike = await Bike.findById({ _id: bikeId });
+  const { isRented } = bike;
+
+  const updatedBike = await bike.updateOne(
     { $set: { isRented: !isRented } },
     { new: true }
   );

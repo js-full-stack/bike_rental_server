@@ -11,12 +11,20 @@ const HTTP_CODE = {
   INTERNAL_SERVER_ERROR: 500,
 };
 
+const HTTP_PORT = process.env.PORT;
 const DB_URL = process.env.MONGO_URL;
+
 const CONNECT_DB_OPTS = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
-const TMP_MESSAGE_RESP = { message: "success" };
+const TMP_MESSAGE_RESP = { SUCCESS: "success" };
 
-module.exports = { HTTP_CODE, DB_URL, CONNECT_DB_OPTS, TMP_MESSAGE_RESP };
+module.exports = {
+  HTTP_CODE,
+  HTTP_PORT,
+  DB_URL,
+  CONNECT_DB_OPTS,
+  TMP_MESSAGE_RESP,
+};
