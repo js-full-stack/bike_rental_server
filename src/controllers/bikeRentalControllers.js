@@ -27,8 +27,8 @@ const getBikeByIdController = async (req, res) => {
 
 const addBikeController = async (req, res) => {
   const { bikeName, bikeType, rentPrice } = req.body;
-  await addBikeService(bikeName, bikeType, rentPrice);
-  res.status(201).json({ MSG_SUCCESS });
+  const bike = await addBikeService(bikeName, bikeType, rentPrice);
+  res.status(201).json({ MSG_SUCCESS, bike });
 };
 
 const removeBikeController = async (req, res) => {
