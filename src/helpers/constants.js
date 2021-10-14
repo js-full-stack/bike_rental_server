@@ -11,6 +11,11 @@ const HTTP_CODE = {
   INTERNAL_SERVER_ERROR: 500,
 };
 
+MESSAGE_RESP_TEMPS = {
+  MSG_SUCCESS: "Successful requiest",
+  MSG_AUTH_ERROR: "Wrong user data",
+};
+
 const HTTP_PORT = process.env.PORT;
 const DB_URL = process.env.MONGO_URL;
 
@@ -19,12 +24,10 @@ const CONNECT_DB_OPTS = {
   useUnifiedTopology: true,
 };
 
-const TMP_MESSAGE_RESP = { SUCCESS: "success" };
-
 module.exports = {
   HTTP_CODE,
   HTTP_PORT,
   DB_URL,
   CONNECT_DB_OPTS,
-  TMP_MESSAGE_RESP,
+  MESSAGE_RESP_TEMPS,
 };

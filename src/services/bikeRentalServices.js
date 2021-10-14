@@ -10,8 +10,8 @@ const getBikeByIdService = async (bikeId) => {
   return bike;
 };
 
-const addBikeService = async (bikeName, rentPrice) => {
-  const bike = new Bike({ bikeName, rentPrice });
+const addBikeService = async (bikeName, bikeType, rentPrice) => {
+  const bike = new Bike({ bikeName,bikeType, rentPrice });
   await bike.save();
 };
 
@@ -23,10 +23,7 @@ const updateRentalStatusService = async (bikeId) => {
   const bike = await Bike.findById({ _id: bikeId });
   const { isRented } = bike;
 
-  const updatedBike = await bike.updateOne(
-    { $set: { isRented: !isRented } },
-    { new: true }
-  );
+  await bike.updateOne({ $set: { isRented: !isRented } }, { new: true });
 };
 
 module.exports = {
