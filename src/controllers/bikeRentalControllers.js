@@ -9,8 +9,8 @@ const {
 
 //* Constants
 const {
-  MESSAGE_RESP_TEMPS: { MSG_SUCCESS, MSG_AUTH_ERROR },
-  // HTTP_CODE: { CREATED },
+  MESSAGE_RESP_TEMPS: { MSG_SUCCESS },
+  HTTP_CODE: { CREATED },
 } = require("../helpers/constants");
 
 //* Controllers
@@ -22,13 +22,16 @@ const getBikesController = async (req, res) => {
 const getBikeByIdController = async (req, res) => {
   const { id } = req.params;
   const bike = await getBikeByIdService(id);
-  res.json({ MSG_SUCCESS, paylaod: bike });
+  res.json({ MSG_SUCCESS });
 };
 
 const addBikeController = async (req, res) => {
   const { bikeName, bikeType, rentPrice } = req.body;
   const bike = await addBikeService(bikeName, bikeType, rentPrice);
-  res.status(201).json({ MSG_SUCCESS, bike });
+  await getBikesService();
+
+  // console.log(bike);
+  res.status(CREATED).json({ MSG_SUCCESS, payload: bike });
 };
 
 const removeBikeController = async (req, res) => {
