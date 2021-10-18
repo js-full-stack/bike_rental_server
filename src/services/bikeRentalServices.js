@@ -5,11 +5,6 @@ const getBikesService = async () => {
   return bikes;
 };
 
-const getBikeByIdService = async (bikeId) => {
-  const bike = await Bike.findById({ _id: bikeId });
-  return bike;
-};
-
 const addBikeService = async (bikeName, bikeType, rentPrice) => {
   const bike = new Bike({ bikeName, bikeType, rentPrice });
   await bike.save();
@@ -17,13 +12,13 @@ const addBikeService = async (bikeName, bikeType, rentPrice) => {
 };
 
 const removeBikeService = async (bikeId) => {
-  await Bike.findByIdAndRemove({ _id: bikeId });
+  await Bike.findByIdAndRemove(bikeId);
 };
 
 const updateRentalStatusService = async (bikeId) => {
-  const bike = await getBikeByIdService(bikeId);
+  const bike = await Bike.findById(bikeId);
+  console.log(bike);
   const { isRented } = bike;
-
   await bike.updateOne({ $set: { isRented: !isRented } }, { new: true });
 };
 
