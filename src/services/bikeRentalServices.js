@@ -24,7 +24,6 @@ const updateRentalStatusService = async (bikeId) => {
 
 module.exports = {
   getBikesService,
-  getBikeByIdService,
   addBikeService,
   removeBikeService,
   updateRentalStatusService,

@@ -19,7 +19,6 @@ const getBikesController = async (req, res) => {
   res.json({ MSG_SUCCESS, payload: bikes });
 };
 
-
 const addBikeController = async (req, res) => {
   const { bikeName, bikeType, rentPrice } = req.body;
   await addBikeService(bikeName, bikeType, rentPrice);
@@ -45,7 +44,6 @@ const updateRentalStatusController = async (req, res) => {
 
 module.exports = {
   getBikesController,
-  getBikeByIdController,
   addBikeController,
   removeBikeController,
   updateRentalStatusController,
