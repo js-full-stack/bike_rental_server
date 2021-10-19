@@ -1,7 +1,6 @@
 //* Services
 const {
   getBikesService,
-  getBikeByIdService,
   addBikeService,
   removeBikeService,
   updateRentalStatusService,
@@ -24,7 +23,6 @@ const addBikeController = async (req, res) => {
   await addBikeService(bikeName, bikeType, rentPrice);
   const bikes = await getBikesService();
 
-  // console.log(bike);
   res.status(CREATED).json({ MSG_SUCCESS, payload: bikes });
 };
 
