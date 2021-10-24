@@ -37,6 +37,6 @@ app.use(errorHandler);
       console.log(`server work at port ${PORT}`);
     });
   } catch (error) {
-    console.error(`failed to launch app with error ${error.message}`);
+    console.error(`failed to launch app with error: "${error.message}"`);
   }
 })();
